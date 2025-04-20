@@ -17,7 +17,10 @@ let fotos = [
 
 function startSite() {
     document.querySelector('.intro').style.display = 'none';
-    document.querySelector('.main-content').classList.remove('hidden');
+    const mainContent = document.querySelector('.main-content');
+    mainContent.classList.remove('hidden');
+    mainContent.style.display = 'block';
+    
     gerarCorações();
     carregarFotos();
 }
@@ -34,50 +37,32 @@ function gerarCorações() {
 }
 
 function carregarFotos() {
-    const galeria = document.querySelector(".galeria");  // Corrigido para garantir que o elemento correto seja selecionado
+    const galeria = document.getElementById("galeria");
     fotos.forEach(foto => {
         const img = document.createElement("img");
         img.src = "fotos/" + foto;
         img.classList.add("foto");
         galeria.appendChild(img);
+
+        // Ao clicar em uma foto, abre o modal
+        img.addEventListener('click', () => {
+            abrirModal(img.src);
+        });
     });
 }
 
-// Função para abrir a imagem no modal
 function abrirModal(src) {
     const modal = document.getElementById('modal');
     const imgModal = document.getElementById('imgModal');
-    imgModal.src = src;
     modal.style.display = 'block';
+    imgModal.src = src;
 }
 
-// Função para fechar o modal
 function fecharModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
 }
 
-// Seleciona todas as imagens da galeria e adiciona evento de clique para abrir o modal
-const imagens = document.querySelectorAll('.galeria img');
-imagens.forEach(imagem => {
-    console.log(imagem); // Log para depuração - Verifique se as imagens estão sendo selecionadas
-    imagem.addEventListener('click', (e) => {
-        abrirModal(e.target.src);
-    });
-});
-
-// Fecha o modal quando clicar no "x"
-document.querySelector('.close').addEventListener('click', fecharModal);
-
-// Fecha o modal se o usuário clicar fora da imagem
-window.addEventListener('click', (e) => {
-    const modal = document.getElementById('modal');
-    if (e.target === modal) {
-        modal.style.display = 'none';
-    }
-});
-
-// Função para explodir corações ao clicar no PS
 function explodirCoracoes() {
     for (let i = 0; i < 50; i++) {
         const estrela = document.createElement("div");
@@ -89,3 +74,11 @@ function explodirCoracoes() {
         setTimeout(() => estrela.remove(), 8000);
     }
 }
+
+// Fechar modal se clicar fora da imagem
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('modal');
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
