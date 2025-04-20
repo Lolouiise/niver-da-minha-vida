@@ -74,3 +74,11 @@ function explodirCoracoes() {
         setTimeout(() => estrela.remove(), 8000);
     }
 }
+function tocarMusica(id) {
+    const audio = document.getElementById(id);
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+}
