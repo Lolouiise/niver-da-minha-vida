@@ -1,4 +1,3 @@
-let currentIndex = 0;
 let fotos = [
     "IMG-20240324-WA0001.jpg",
     "IMG-20240517-WA0004.jpg",
@@ -13,7 +12,7 @@ let fotos = [
     "IMG-20241020-WA0011.jpg",
     "IMG-20241202-WA0013.jpg",
     "IMG_20250418_230449.jpg",
-    "IMG_20250418_230547.jpg",
+    "IMG_20250418_230547.jpg"
 ];
 
 function startSite() {
@@ -21,7 +20,6 @@ function startSite() {
     document.querySelector('.main-content').classList.remove('hidden');
     gerarCorações();
     carregarFotos();
-    mostrarSlide(currentIndex); // mostra o primeiro slide fixo
 }
 
 function gerarCorações() {
@@ -36,31 +34,13 @@ function gerarCorações() {
 }
 
 function carregarFotos() {
-    const slider = document.getElementById("slider");
-    fotos.forEach((foto, index) => {
+    const galeria = document.getElementById("galeria");
+    fotos.forEach(foto => {
         const img = document.createElement("img");
         img.src = "fotos/" + foto;
-        img.classList.add("slide");
-        img.style.display = "none";
-        slider.appendChild(img);
+        img.classList.add("foto");
+        galeria.appendChild(img);
     });
-}
-
-function mostrarSlide(index) {
-    const slides = document.querySelectorAll(".slide");
-    slides.forEach((slide, i) => {
-        slide.style.display = i === index ? "block" : "none";
-    });
-}
-
-function proximoSlide() {
-    currentIndex = (currentIndex + 1) % fotos.length;
-    mostrarSlide(currentIndex);
-}
-
-function slideAnterior() {
-    currentIndex = (currentIndex - 1 + fotos.length) % fotos.length;
-    mostrarSlide(currentIndex);
 }
 
 function explodirCoracoes() {
@@ -72,13 +52,5 @@ function explodirCoracoes() {
         estrela.style.position = "absolute";
         document.body.appendChild(estrela);
         setTimeout(() => estrela.remove(), 8000);
-    }
-}
-function tocarMusica(id) {
-    const audio = document.getElementById(id);
-    if (audio.paused) {
-        audio.play();
-    } else {
-        audio.pause();
     }
 }
