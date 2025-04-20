@@ -34,7 +34,58 @@ function gerarCorações() {
 }
 
 function carregarFotos() {
-    const galeria = document.querySelector(".galeria");  // Corrigi para garantir que o elemento correto seja selecionado
+    const galeria = document.querySelector(".galeria");  // Corrigido para garantir que o elemento correto seja selecionado
     fotos.forEach(foto => {
         const img = document.createElement("img");
-        img.src =
+        img.src = "fotos/" + foto;
+        img.classList.add("foto");
+        galeria.appendChild(img);
+    });
+}
+
+// Função para abrir a imagem no modal
+function abrirModal(src) {
+    const modal = document.getElementById('modal');
+    const imgModal = document.getElementById('imgModal');
+    imgModal.src = src;
+    modal.style.display = 'block';
+}
+
+// Função para fechar o modal
+function fecharModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+// Seleciona todas as imagens da galeria e adiciona evento de clique para abrir o modal
+const imagens = document.querySelectorAll('.galeria img');
+imagens.forEach(imagem => {
+    console.log(imagem); // Log para depuração - Verifique se as imagens estão sendo selecionadas
+    imagem.addEventListener('click', (e) => {
+        abrirModal(e.target.src);
+    });
+});
+
+// Fecha o modal quando clicar no "x"
+document.querySelector('.close').addEventListener('click', fecharModal);
+
+// Fecha o modal se o usuário clicar fora da imagem
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('modal');
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+// Função para explodir corações ao clicar no PS
+function explodirCoracoes() {
+    for (let i = 0; i < 50; i++) {
+        const estrela = document.createElement("div");
+        estrela.className = "heart";
+        estrela.style.left = Math.random() * 100 + "vw";
+        estrela.style.top = Math.random() * 100 + "vh";
+        estrela.style.position = "absolute";
+        document.body.appendChild(estrela);
+        setTimeout(() => estrela.remove(), 8000);
+    }
+}
