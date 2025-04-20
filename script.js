@@ -17,10 +17,7 @@ let fotos = [
 
 function startSite() {
     document.querySelector('.intro').style.display = 'none';
-    const mainContent = document.querySelector('.main-content');
-    mainContent.classList.remove('hidden');
-    mainContent.style.display = 'block';
-    
+    document.querySelector('.main-content').classList.remove('hidden');
     gerarCorações();
     carregarFotos();
 }
@@ -43,24 +40,7 @@ function carregarFotos() {
         img.src = "fotos/" + foto;
         img.classList.add("foto");
         galeria.appendChild(img);
-
-        // Ao clicar em uma foto, abre o modal
-        img.addEventListener('click', () => {
-            abrirModal(img.src);
-        });
     });
-}
-
-function abrirModal(src) {
-    const modal = document.getElementById('modal');
-    const imgModal = document.getElementById('imgModal');
-    modal.style.display = 'block';
-    imgModal.src = src;
-}
-
-function fecharModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'none';
 }
 
 function explodirCoracoes() {
@@ -75,9 +55,38 @@ function explodirCoracoes() {
     }
 }
 
-// Fechar modal se clicar fora da imagem
+// Seleciona todas as imagens da galeria
+const imagens = document.querySelectorAll('.galeria img');
+
+// Cria a estrutura do modal
+const modal = document.createElement('div');
+modal.classList.add('modal');
+const modalImg = document.createElement('img');
+modalImg.classList.add('modal-content');
+const span = document.createElement('span');
+span.classList.add('close');
+span.innerHTML = '&times;';  // Ícone de fechar
+
+// Adiciona o conteúdo do modal à página
+modal.appendChild(modalImg);
+modal.appendChild(span);
+document.body.appendChild(modal);
+
+// Abre o modal com a imagem clicada
+imagens.forEach(imagem => {
+    imagem.addEventListener('click', () => {
+        modal.style.display = 'block';
+        modalImg.src = imagem.src;
+    });
+});
+
+// Fecha o modal quando clicar no "x"
+span.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+// Fecha o modal se o usuário clicar fora da imagem
 window.addEventListener('click', (e) => {
-    const modal = document.getElementById('modal');
     if (e.target === modal) {
         modal.style.display = 'none';
     }
