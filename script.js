@@ -34,59 +34,7 @@ function gerarCorações() {
 }
 
 function carregarFotos() {
-    const galeria = document.getElementById("galeria");
+    const galeria = document.querySelector(".galeria");  // Corrigi para garantir que o elemento correto seja selecionado
     fotos.forEach(foto => {
         const img = document.createElement("img");
-        img.src = "fotos/" + foto;
-        img.classList.add("foto");
-        galeria.appendChild(img);
-    });
-}
-
-function explodirCoracoes() {
-    for (let i = 0; i < 50; i++) {
-        const estrela = document.createElement("div");
-        estrela.className = "heart";
-        estrela.style.left = Math.random() * 100 + "vw";
-        estrela.style.top = Math.random() * 100 + "vh";
-        estrela.style.position = "absolute";
-        document.body.appendChild(estrela);
-        setTimeout(() => estrela.remove(), 8000);
-    }
-}
-// Seleciona todas as imagens da galeria
-const imagens = document.querySelectorAll('.galeria img');
-
-// Cria a estrutura do modal
-const modal = document.createElement('div');
-modal.classList.add('modal');
-const modalImg = document.createElement('img');
-modalImg.classList.add('modal-content');
-const span = document.createElement('span');
-span.classList.add('close');
-span.innerHTML = '&times;';  // Ícone de fechar
-
-// Adiciona o conteúdo do modal à página
-modal.appendChild(modalImg);
-modal.appendChild(span);
-document.body.appendChild(modal);
-
-// Abre o modal com a imagem clicada
-imagens.forEach(imagem => {
-    imagem.addEventListener('click', () => {
-        modal.style.display = 'block';
-        modalImg.src = imagem.src;
-    });
-});
-
-// Fecha o modal quando clicar no "x"
-span.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-// Fecha o modal se o usuário clicar fora da imagem
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
-    }
-});
+        img.src =
