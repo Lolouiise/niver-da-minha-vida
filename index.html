@@ -25,7 +25,48 @@ Mas olha, eu realmente não tenho uma vida mais sem você, em nenhum momento seq
         </div>
 
         <h2 class="fotos-titulo">Fotos lindas 📸</h2>
-        <div class="galeria" id="galeria"></div>
+        <div class="galeria">
+    <img src="fotos/IMG-20240324-WA0001.jpg" alt="Foto 1">
+    <img src="fotos/IMG-20240517-WA0004.jpg" alt="Foto 2">
+    <img src="fotos/IMG-20250418_231621.jpg" alt="Foto 3">
+    <img src="fotos/IMG-20240601-WA0007.jpg" alt="Foto 4">
+    <img src="fotos/IMG-20240607-WA0035.jpg" alt="Foto 5">
+    <img src="fotos/IMG-20240611-WA0023.jpg" alt="Foto 6">
+    <img src="fotos/IMG-20240628-WA0017.jpg" alt="Foto 7">
+    <img src="fotos/IMG-20240810-WA0060.jpg" alt="Foto 8">
+    <img src="fotos/IMG-20241015-WA0009.jpg" alt="Foto 9">
+    <img src="fotos/IMG-20241019-WA0003.jpg" alt="Foto 10">
+    <img src="fotos/IMG-20241020-WA0011.jpg" alt="Foto 11">
+    <img src="fotos/IMG-20241202-WA0013.jpg" alt="Foto 12">
+    <img src="fotos/IMG_20250418_230449.jpg" alt="Foto 13">
+    <img src="fotos/IMG_20250418_230547.jpg" alt="Foto 14">
+</div>
+
+<!-- Modal para exibir a imagem maior -->
+<div id="modal" class="modal">
+    <span class="close" onclick="fecharModal()">&times;</span>
+    <img class="modal-content" id="imgModal">
+</div>
+
+<script>
+    // Abertura da imagem ao clicar
+    const imagens = document.querySelectorAll('.galeria img');
+    const modal = document.getElementById('modal');
+    const imgModal = document.getElementById('imgModal');
+
+    imagens.forEach(imagem => {
+        imagem.addEventListener('click', (e) => {
+            modal.style.display = 'block';
+            imgModal.src = e.target.src;
+        });
+    });
+
+    // Função para fechar o modal
+    function fecharModal() {
+        modal.style.display = 'none';
+    }
+</script>
+
 
         <div class="ps" onclick="explodirCoracoes()">PS: Te amo muitão 💌<br>ASS: Isabeli</div>
     </div>
