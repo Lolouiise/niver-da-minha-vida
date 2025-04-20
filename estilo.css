@@ -262,4 +262,27 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1; /* Garante que a galeria fique acima do fundo e não seja coberta por outros elementos */
+}
+
+.galeria img {
+    width: 100%;
+    max-width: 200px; /* Limita o tamanho das miniaturas */
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer; /* O cursor ficará como 'pointer' quando passar por cima */
+    transition: transform 0.3s ease; /* Efeito suave no zoom */
+    z-index: 2; /* Garante que a imagem tenha um z-index maior que outros elementos */
+}
+
+.galeria img:hover {
+    transform: scale(1.1); /* Aumenta um pouco a foto quando o usuário passar o mouse por cima */
+}
 
