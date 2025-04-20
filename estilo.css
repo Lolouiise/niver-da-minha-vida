@@ -186,3 +186,28 @@ body {
 .musicas button:hover {
     background-color: rgba(255, 192, 203, 0.9);
 }
+.fotos-titulo {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.8em;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.foto {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.foto:hover {
+    transform: scale(1.05);
+}
