@@ -34,14 +34,14 @@
         </div>
 
         <h2 class="musicas-titulo">Musiquinhas para meu marido 🎵</h2>
-        <div class="musicas">
-            <audio controls>
-                <source src="golden_hour.mp3" type="audio/mpeg">
-            </audio>
-            <audio controls>
-                <source src="as_the_world_caves_in.mp3" type="audio/mpeg">
-            </audio>
-        </div>
+       <div class="musicas">
+    <button onclick="tocarMusica('musica1')">Tocar/Pausar Golden Hour</button>
+    <audio id="musica1" src="golden_hour.mp3"></audio>
+
+    <button onclick="tocarMusica('musica2')">Tocar/Pausar As the World Caves In</button>
+    <audio id="musica2" src="as_the_world_caves_in.mp3"></audio>
+</div>
+
 
         <div class="ps" onclick="explodirCoracoes()">PS: Te amo muitão 💌<br>ASS: Isabeli</div>
 
