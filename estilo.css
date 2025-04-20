@@ -30,10 +30,75 @@ body {
     display: none;
 }
 
-.main-content {
-    display: none;
-    padding: 20px;
+.hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: float 6s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: -10px;
+    top: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+.texto {
+    padding: 30px;
+    font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 20px;
+    border-radius: 10px;
     z-index: 1;
+    position: relative;
+}
+
+.ps {
+    margin: 40px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.3em;
+    transition: 0.3s ease;
+}
+
+.ps:hover {
+    color: pink;
 }
 
 .fotos-titulo {
@@ -42,7 +107,7 @@ body {
     font-size: 1.8em;
 }
 
-.galeria {
+.fotos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -50,19 +115,20 @@ body {
     padding: 20px;
 }
 
-.foto {
-    width: 250px;
+.fotos img {
+    width: 100%;
+    max-width: 300px;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
 }
 
-.foto:hover {
-    transform: scale(1.05);
+.fotos img:hover {
+    transform: scale(1.1);
 }
 
-/* Modal */
+/* Estilo para o modal (mantido apenas se precisar de modificação futura) */
 .modal {
     display: none;
     position: fixed;
@@ -71,6 +137,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
+    overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -89,19 +156,4 @@ body {
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
-}
-
-/* Ajustes para telas pequenas */
-@media (max-width: 768px) {
-    .main-content {
-        padding: 10px;
-    }
-
-    .texto {
-        font-size: 1em;
-    }
-
-    .galeria img {
-        width: 100%;
-    }
 }
