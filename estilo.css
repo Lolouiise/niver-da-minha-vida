@@ -172,3 +172,17 @@ body {
 .controles button:hover {
     background-color: rgba(255, 105, 180, 0.9);
 }
+.musicas button {
+    background-color: rgba(255, 105, 180, 0.8);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1em;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.musicas button:hover {
+    background-color: rgba(255, 192, 203, 0.9);
+}
